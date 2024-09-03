@@ -1,0 +1,23 @@
+{
+  "name": "flash",
+  "version": "0.1.0",
+  "description": "Das Repository der WBS-\"Flash\"-CLI",
+  "main": "bin/index.js",
+  "bin": {
+    "flash": "./bin/index.js"
+  },
+  "scripts": {},
+  "keywords": [
+    "WBS IT-Service GmbH",
+    "Flash",
+    "CLI",
+    "Project init"
+  ],
+  "author": "Colin Grahm",
+  "license": "MIT Licence",
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "commander": "^12.1.0",
+    "terminal-kit": "^3.1.1"
+  }
+}
