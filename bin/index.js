@@ -26,6 +26,8 @@ var projectLanguages = [
     'React' 
 ] ;
 
+const projectTitle = "my-project";
+
 const program = new Command();
 
 program
@@ -105,6 +107,7 @@ program
       terminal.inputField((error, projectName) => {
         if (error) {
           console.error('Error:', error);
+          projectTitle = projectName;
           process.exit(1);
         }
 
@@ -169,7 +172,7 @@ program
             case 'React':
               console.log('React project selected.');
 
-              exec('npm create-react-project ' + projectName, (error, stdout, stderr) => {
+              exec('npx create-react-project ' + projectTitle, (error, stdout, stderr) => {
                 if (error) {
                   console.error(`Error: ${error.message}`);
                   return;
