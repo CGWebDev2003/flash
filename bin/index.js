@@ -3,8 +3,8 @@
 const { Command } = require('commander');
 const chalk = require('chalk');
 const terminal = require('terminal-kit').terminal;
+const { exec } = require('child_process');
 const readline = require('readline');
-const { execSync } = require('child_process');
 const fs = require('fs');
 
 // Define Chalk Colors
@@ -128,8 +128,63 @@ program
             "#%s selected: %s\n",
             response.selectedIndex,
             response.selectedText
+
           );
 
+          console.log('  ');
+          console.log(devider(' ========================================================== '));
+          console.log('  ');
+
+          switch(response.selectedText) {
+            case 'HTML':
+              console.log('HTML project selected.');
+
+              exec('dir', (error, stdout, stderr) => {
+                if (error) {
+                  console.error(`Error: ${error.message}`);
+                  return;
+                }
+                if (stderr) {
+                  console.error(`Stderr: ${stderr}`);
+                  return;
+                }
+              });
+
+              break;
+            case 'Vanilla JavaScript':
+              console.log('Vanilla JavaScript project selected.');
+
+              exec('dir', (error, stdout, stderr) => {
+                if (error) {
+                  console.error(`Error: ${error.message}`);
+                  return;
+                }
+                if (stderr) {
+                  console.error(`Stderr: ${stderr}`);
+                  return;
+                }
+              });
+
+              break;
+            case 'React':
+              console.log('React project selected.');
+
+              exec('npm create-react-project ' + projectName, (error, stdout, stderr) => {
+                if (error) {
+                  console.error(`Error: ${error.message}`);
+                  return;
+                }
+                if (stderr) {
+                  console.error(`Stderr: ${stderr}`);
+                  return;
+                }
+              });
+
+              break;
+            default:
+              console.log(terminal.red('Unknown project type selected.'));
+          }
+  
           console.log('  ');
           console.log(devider(' ========================================================== '));
           console.log('  ');
